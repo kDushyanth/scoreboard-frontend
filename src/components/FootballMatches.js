@@ -1,7 +1,6 @@
-import { Typography, ListItem, ListItemText, Divider, List } from "@mui/material"
+import { Typography, ListItem, ListItemText, Divider, List, Box,ListItemButton } from "@mui/material"
 import React, { useEffect } from "react"
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom"
 import { fetchMatches } from "../redux/"
 
 const FootballMatches = ({ matchesData, fetchMatches }) => {
@@ -11,10 +10,16 @@ const FootballMatches = ({ matchesData, fetchMatches }) => {
     console.log(matchesData)
     return (
         matchesData.loading ? "Loading" : (
-            <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
+            <Box
+            sx={{
+                width : 600,
+                border : 1
+            }}>
+            <List>
                 {
                     matchesData.matches.map(match => (
-                        <ListItem alignItems="flex-start" key={match.id}>
+                        <ListItem disablePadding key={match.id}>
+                            <ListItemButton component="a" href={`/football-match-details/${match.id}`}>
                             <ListItemText
                                 primary={
                                     <React.Fragment>
@@ -26,19 +31,16 @@ const FootballMatches = ({ matchesData, fetchMatches }) => {
                                         <Typography>
                                             {match.team2Name} - {match.team2Goals}
                                         </Typography>
-                                        <Link to={`/football-match-details/${match.id}`}>
-                                            click-here
-                                        </Link>
-                                        <Divider variant="fullWidth" component="p" variant="fullWidth" />
                                     </React.Fragment>
                                 }
                             />
-
+                            </ListItemButton>
                         </ListItem>
 
                     ))
                 }
             </List>
+            </Box>
         ))
 }
 

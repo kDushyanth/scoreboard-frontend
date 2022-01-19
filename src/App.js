@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Route, Routes } from "react-router-dom";
 
 import FootballMatches from "./components/FootballMatches";
 import FootballMatchDetails from './components/FootballMatchDetails';
+import Demo from "./components/Demo";
 
 function App() {
   return (
