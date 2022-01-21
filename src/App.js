@@ -7,6 +7,7 @@ import FootballMatchDetails from './components/FootballMatchDetails';
 import Demo from "./components/Demo";
 import Footer from './components/Footer'
 import FootballTournaments from "./components/FootballTournaments";
+import FootballTournamentDetails from "./components/FootballTournamentDetails";
 function App() {
   return (
     <>
@@ -14,8 +15,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path = '/football-tournaments/' element = {<FootballTournaments/>} />
+          <Route path = "/football-tournaments/" element = {<FootballTournaments/>} />
           <Route path = "/" element = {<FootballMatches/>} />
+          <Route path = "/football-tournaments/:id" element = {<FootballTournamentDetails/>}/>
           <Route path = "/football-match-details/:id" element={<FootballMatchDetails/>}/>
         </Routes>
       </Router>        
