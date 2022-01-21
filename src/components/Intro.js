@@ -1,11 +1,12 @@
 import { Card } from '@mui/material'
 import { Box } from '@mui/system'
 import { useEffect, useState } from 'react'
+import { introduction } from '../styles'
 import Typewriter from 'typewriter-effect'
 const Introduction = () => {
 
     return (
-        <Card sx={{ height: "15em", backgroundColor: "black", color: "white",display:"flex",justifyContent:'center',alignItems:'center'}}>
+        <Card sx={introduction}>
             <Box
             sx={{fontSize:"1.5rem"}}>
             <Typewriter
