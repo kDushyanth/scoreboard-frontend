@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom"
 import { fetchFootballTDetails } from "../redux"
 import { connect } from "react-redux"
 import React from "react"
-import { Grid,Typography } from "@mui/material"
+import { Box, Divider, Grid, Typography } from "@mui/material"
 import FootballMatchesUtil from "./FootballMatchesUtil"
+import { centerText } from "../styles"
 
 const FootballTDetails = ({ tournamentDetails, fetchTournamentDetails }) => {
     const { id } = useParams()
@@ -16,13 +17,16 @@ const FootballTDetails = ({ tournamentDetails, fetchTournamentDetails }) => {
     }, [])
     return tournamentDetails.loading ? "Loading" : (
         <React.Fragment>
-            <Grid container>
-                <Grid item xs={4}><Typography variant="span">{tournamentDetails.tMatches.name} </Typography> </Grid>
-                <Grid item xs={3}><Typography variant="span">  {tournamentDetails.tMatches.startDate}  </Typography></Grid>
-                <Grid item xs={1}><Typography variant="span">  to </Typography></Grid>
-                <Grid item xs={4}><Typography variant="span"> {tournamentDetails.tMatches.endDate}</Typography></Grid>
-            </Grid>
-            <FootballMatchesUtil matches={tournamentDetails.tMatches.matches}/>
+            <Box>
+                <Grid container>
+                    <Grid item xs="12" sx={centerText}><Typography variant="h6">{tournamentDetails.tMatches.name} </Typography> </Grid>
+                    <Grid item xs="6" sx={{ display: 'flex', justifyContent: 'flex-start', color: 'orange' }}><Typography variant="span">  {tournamentDetails.tMatches.startDate}  </Typography></Grid>
+
+                    <Grid item xs="6" sx={{ display: 'flex', justifyContent: 'flex-end', color: 'red' }}><Typography variant="span"> {tournamentDetails.tMatches.endDate}</Typography></Grid>
+                </Grid>
+                <Divider/>
+                <FootballMatchesUtil matches={tournamentDetails.tMatches.matches} />
+            </Box>
         </React.Fragment>
     );
 }

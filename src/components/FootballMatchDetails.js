@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchMatchDetails } from '../redux'
-import { Typography, Grid, Box, Divider } from '@mui/material'
-import Paper from '@mui/material/Paper';
+import { Typography, Grid, Box, Divider,Button,Card } from '@mui/material'
 import { connect } from 'react-redux'
 import FootballPlayerScores from './FootballPlayerScores'
-
+import FootballTeamScore from './FootballTeamScore'
+import { teamScore } from '../styles'
 
 
 const FootballMatchDetails = ({ matchDetails, fetchMatchDetails }) => {
@@ -15,22 +15,13 @@ const FootballMatchDetails = ({ matchDetails, fetchMatchDetails }) => {
     useEffect(() => {
         fetchMatchDetails(url)
     }, [])
-    /* 
-    
-    
-            <Grid item xs={6}>
-                        <Typography variant ="h5">{matchDetails.matchDetails.footballTeamScores[0].name}</Typography>
-                        <FootballPlayerScores scores = {matchDetails.matchDetails.footballTeamScores[0].footballPlayerScores}/>   
-                </Grid>
-                <Grid item xs={6}>
-                        <Typography variant ="h5">{matchDetails.matchDetails.footballTeamScores[1].name}</Typography>
-                        
-                </Grid>
-    */
+   
     console.log("match details", matchDetails)
-    return (matchDetails.loading ? "Loading" : (<Grid container maxWidth={600} border={1}>
+    return (matchDetails.loading ? "Loading" : (
+    <Card sx={{width:600,padding:2}}>
+    <Grid container >
         <Grid item xs={12} display="flex" justifyContent="center">
-            <Typography variant="span">{matchDetails.matchDetails.tournamentName}</Typography>
+            <Typography variant="span"><Button color='info' size='large' href={`/football-tournament-details/${matchDetails.matchDetails.tournamentId}`}>{matchDetails.matchDetails.tournamentName}</Button></Typography>
         </Grid>
         <Divider style={{ width: '100%' }} />
         <Grid item xs={12} display="flex" justifyContent="center">
@@ -38,14 +29,21 @@ const FootballMatchDetails = ({ matchDetails, fetchMatchDetails }) => {
         </Grid>
         <Divider style={{ width: '100%' }} />
         <Grid item xs={6} display="flex" flexDirection="column" alignItems="center" >
-            <Typography variant="span">{matchDetails.matchDetails.footballTeamScores[0].name}</Typography>
+            <Box sx={teamScore}>
+            <Typography variant="h6">{matchDetails.matchDetails.footballTeamScores[0].name} - </Typography>
+            <Typography variant="h6">{matchDetails.matchDetails.footballTeamScores[0].goals} </Typography>
+            </Box>
             <FootballPlayerScores scores = {matchDetails.matchDetails.footballTeamScores[0].footballPlayerScores}/>   
         </Grid>
         <Grid item xs={6} display="flex" flexDirection="column" alignItems="center" >
-            <Typography variant="h5">{matchDetails.matchDetails.footballTeamScores[1].name}</Typography>
+            <Box sx={teamScore}>
+            <Typography variant="h6">{matchDetails.matchDetails.footballTeamScores[1].name} - </Typography>
+            <Typography variant="h6">{matchDetails.matchDetails.footballTeamScores[1].goals}</Typography>
+            </Box>
             <FootballPlayerScores scores = {matchDetails.matchDetails.footballTeamScores[1].footballPlayerScores}/>   
         </Grid>
-    </Grid>)
+    </Grid>
+    </Card>)
     )
 }
 const mapStateToProps = (state) => {
