@@ -18,6 +18,7 @@ const FootballTDetails = ({ tournamentDetails, fetchTournamentDetails }) => {
     return tournamentDetails.loading ? "Loading" : (
         <React.Fragment>
             <Box>
+            <Typography sx={{textDecoration : "underline",marginBottom:"20px"}} color="secondary" variant ="h6">Football Tournament Details</Typography>
                 <Grid container>
                     <Grid item xs="12" sx={centerText}><Typography variant="h6">{tournamentDetails.tMatches.name} </Typography> </Grid>
                     <Grid item xs="6" sx={{ display: 'flex', justifyContent: 'flex-start', color: 'orange' }}><Typography variant="span">  {tournamentDetails.tMatches.startDate}  </Typography></Grid>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchMatchDetails } from '../redux'
-import { Typography, Grid, Box, Divider, Button, Card } from '@mui/material'
+import { Typography, Grid, Box, Divider, Button, Card, Container } from '@mui/material'
 import { connect } from 'react-redux'
 import FootballPlayerScores from './FootballPlayerScores'
 import FootballTeamScore from './FootballTeamScore'
@@ -18,6 +18,8 @@ const FootballMatchDetails = ({ matchDetails, fetchMatchDetails }) => {
 
     console.log("match details", matchDetails)
     return (matchDetails.loading ? "Loading" : (
+        <Box>
+        <Typography sx={{textDecoration : "underline",marginBottom:"10px"}} color="secondary" variant ="h6">Football Match Details</Typography>
         <Card sx={{ width: 600, padding: 2 }}>
             <Grid container >
                 <Grid item xs={12} display="flex" justifyContent="center">
@@ -46,7 +48,8 @@ const FootballMatchDetails = ({ matchDetails, fetchMatchDetails }) => {
                     <FootballPlayerScores scores={matchDetails.matchDetails.footballTeamScores[1].footballPlayerScores} />
                 </Grid>
             </Grid>
-        </Card>)
+        </Card>
+        </Box>)
     )
 }
 const mapStateToProps = (state) => {

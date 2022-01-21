@@ -2,9 +2,11 @@ import { Box, Grid, Typography } from '@mui/material'
 import MailIcon from '@mui/icons-material/Mail';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { footer } from '../styles';
+
 const Footer = () => {
     return (
-        <footer style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: '100%', textAlign: 'center', backgroundColor: 'black', paddingTop: 30, paddingBottom: 30, marginTop: 40 }}>
+        <footer style={footer}>
             <Typography color="white">Designed by: Dushyanth</Typography>
             <Box sx={{ width: 100, marginLeft: 'auto', marginRight: 'auto' }}>
                 <Grid container>

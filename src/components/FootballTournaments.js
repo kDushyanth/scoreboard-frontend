@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { fetchFootballTournaments } from "../redux"
 import { connect } from "react-redux"
 import React from 'react'
-import { Typography,List,ListItem,ListItemButton,Box,ListItemText, Grid } from "@mui/material"
+import { Typography,List,ListItem,ListItemButton,Box,ListItemText, Grid, Container } from "@mui/material"
 import { centerText } from "../styles"
 
 const FootballTournaments = ({ footballTournaments, fetchTournaments }) => {
@@ -11,6 +11,8 @@ const FootballTournaments = ({ footballTournaments, fetchTournaments }) => {
         fetchTournaments()
     }, [])
     return footballTournaments.loading ? "Loading" : (
+            <Container>
+            <Typography sx={{textDecoration : "underline",marginBottom:"10ox"}} color="secondary" variant ="h6">Football Tournaments</Typography>
             <List>
                 {
                     footballTournaments.tournaments.map(tournament => (
@@ -34,6 +36,7 @@ const FootballTournaments = ({ footballTournaments, fetchTournaments }) => {
                     ))
                 }
             </List>
+            </Container>
     )
 }
 const mapStateToProps = (state) => {

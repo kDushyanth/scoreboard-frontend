@@ -10,18 +10,21 @@ import FootballTournaments from "./components/FootballTournaments";
 import FootballTournamentDetails from "./components/FootballTournamentDetails";
 import NavBar from "./components/NavBar";
 import { centerContent,bgImg } from './styles';
+import Introduction from "./components/Intro";
 
 function App() {
   return (
     <>
       
       <NavBar game={"football"} />
+      <Introduction/>
       <Box sx={centerContent}>
         <Provider store={store}>
           <Router>
             <Routes>
               <Route path="/football-tournaments/" element={<FootballTournaments />} />
               <Route path="/football-matches/" element={<FootballMatches />} />
+              <Route path="/" element={<FootballMatches />} />
               <Route path="/football-tournament-details/:id" element={<FootballTournamentDetails />} />
               <Route path="/football-match-details/:id" element={<FootballMatchDetails />} />
             </Routes>
