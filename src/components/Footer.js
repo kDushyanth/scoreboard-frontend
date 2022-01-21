@@ -1,9 +1,25 @@
-import { Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
+import MailIcon from '@mui/icons-material/Mail';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const Footer = () => {
     return (
-        <footer style={{ position: "absolute", left: 0,right:0,bottom:0, width:'100%', textAlign: 'center', backgroundColor: 'black', paddingTop: 30, paddingBottom: 30, marginTop: 40 }}>
+        <footer style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: '100%', textAlign: 'center', backgroundColor: 'black', paddingTop: 30, paddingBottom: 30, marginTop: 40 }}>
             <Typography color="white">Designed by: Dushyanth</Typography>
-            <Typography color="white" display="inline">mail: </Typography><Typography href="mailto:kd13@iitbbs.ac.in" component="a">kd13@iitbbs.ac.in</Typography>
+            <Box sx={{ width: 100, marginLeft: 'auto', marginRight: 'auto' }}>
+                <Grid container>
+                    <Grid xs={4}>
+                        <MailIcon color='primary' onClick={event => window.open('mailto:kd13@iitbbs.ac.in', '_blank')} />
+                    </Grid>
+                    <Grid xs={4}>
+                        <GitHubIcon color='primary' onClick={event => window.open('https://github.com/kDushyanth', '_blank')} />
+                    </Grid>
+                    <Grid xs={4}>
+                        <LinkedInIcon color='primary' onClick={event => window.open('https://www.linkedin.com/in/kurra-dushyanth/', '_blank')} />
+                    </Grid>
+                </Grid>
+            </Box>
+
         </footer>
     )
 }

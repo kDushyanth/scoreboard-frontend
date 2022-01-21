@@ -8,7 +8,6 @@ const NavBar = ({game}) => {
                     <Nav.Link href={`/${game}-matches/`}>matches</Nav.Link>
                     <Nav.Link href={`/${game}-tournaments`}>tournaments</Nav.Link>
                     <Nav.Link href="/about">about</Nav.Link>
-                    <Nav.Link href="/contact-us">contact us</Nav.Link>
 
                 </Nav>
             </Container>
